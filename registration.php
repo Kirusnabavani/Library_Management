@@ -101,7 +101,7 @@ if (isset($_POST['submit'])) {
       <input type="text" name="user_id" required placeholder="enter your id" pattern="U\d{3}" title="User ID must be in the format U001">
       <input type="text" name="fname" required placeholder="enter your first-name">
       <input type="text" name="lname" required placeholder="enter your last-name">
-      <input type="text" name="name" required placeholder="enter your name">
+      <input type="text" name="name" required placeholder="enter your Username">
       <input type="email" name="email" required placeholder="enter your email">
       <input type="password" name="password" required placeholder="enter your password">
       <input type="submit" name="submit" value="register now" class="form-btn">
