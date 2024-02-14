@@ -14,7 +14,6 @@ require_once("./config.php");
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="style.css">
     <style>
         /* CSS styles for the form and table */
         body {
@@ -125,7 +124,7 @@ require_once("./config.php");
 </head>
 <body>
 
-<div class="form-container">
+
         <?php
         if (isset($_SESSION['message'])): ?>
 
@@ -147,7 +146,6 @@ require_once("./config.php");
 
 
 <div class="book-table">
-    <h2>Book Records</h2>
     <h3 class="center-title display-5">Book Records</h3>
     <table border="1">
         <thead>
@@ -161,7 +159,7 @@ require_once("./config.php");
         <tbody>
             <?php
             $sql = "SELECT * FROM book";
-            $result=$conn->query($sql);
+            $result=$database->query($sql);
             if ($result->num_rows > 0) {
                 while($row=$result->fetch_assoc()) {
             ?>
@@ -184,9 +182,9 @@ require_once("./config.php");
     </table>
 </div>
 
+
 <div class="form-container">
     <h3 class="center-title display-5">Book Registration</h3>
-    <!-- <h2>Book Registration</h2> -->
     <!-- <?php if($update==true):  ?>
         <h2>Edit Info</h2>
     <?php else: ?>
