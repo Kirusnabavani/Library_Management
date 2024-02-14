@@ -24,7 +24,8 @@ if (isset($_POST['Add_borrow'])) {
         VALUES ('$BorrowID', '$BookID', '$MemberID', '$B_Status', '$Date_Modified')";
 
     if ($database->query($sql) === TRUE) {
-        echo "Record has been saved!";
+        $_SESSION['message'] = "Record has been saved!";
+        $_SESSION['msg_type'] = "warning";
         header("Location: book_borrow.php");
         exit(); 
     } else {
@@ -38,8 +39,17 @@ if (isset($_GET['delete'])) {
     
     $sql = "DELETE FROM bookborrower WHERE borrow_id = '$BorrowID'";
 
-    $database->query($sql) or die($database->error);
-    echo "<h1>Now you are in the process.php file /$_GET [delete]/<-deleted</h1>";
+    
+
+    // Prepare and execute SQL query to delete the user record
+    $result = $database->query($sql) or die($database->error);
+    
+
+   
+
+
+    $_SESSION['message'] = "Book category deleted successfully!";
+    $_SESSION['msg_type'] = "danger";
 
     header("Location: book_borrow.php");
     exit();
@@ -70,7 +80,7 @@ if (isset($_GET['edit'])) {
 
    
     $sql = "SELECT * FROM bookborrower WHERE borrow_id = '$edit_id'";
-    $result = $database->query($sql);
+    $result = $database->query($sql) or die($database->error);
 
     if ($result->num_rows == 1) {
         

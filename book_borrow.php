@@ -1,5 +1,5 @@
 <?php
-require_once('process.php');
+require_once('borrow_process.php');
 require_once('./config.php');
 
 
@@ -116,7 +116,7 @@ td:last-child button:hover {
 </head>
 <body>
 <div class="form-container">
-        <h3 class="center-title"> Add Borrow Details</h3>
+        
 
     <?php
         if (isset($_SESSION['message'])): ?>
@@ -136,37 +136,7 @@ td:last-child button:hover {
                 </button>
             </div>
         <?php endif; ?>
-
-    <form id="borrow-form" action="process.php" method="POST">
-        <label for="borrow_id">Borrow ID:</label>
-        <input type="text" id="borrow_id" name="borrow_id" placeholder="BR001" required pattern="BR\d{3}" value="<?php if(isset($edit_borrow_id)) echo $edit_borrow_id; ?>">
-        
-        <label for="book_id">Book ID:</label>
-        <input type="text" id="book_id" name="book_id" placeholder="B001" required pattern="B\d{3}" value="<?php if(isset($edit_book_id)) echo $edit_book_id; ?>">
-        
-        <label for="member_id">Member ID:</label>
-        <input type="text" id="member_id" name="member_id" placeholder="M001" required pattern="M\d{3}" value="<?php if(isset($edit_member_id)) echo $edit_member_id; ?>">
-        
-        <label for="borrow_status">Borrow Status:</label>
-        <select id="borrow_status" name="borrow_status" required>
-            <option value="borrowed" <?php if(isset($edit_borrow_status) && $edit_borrow_status == 'borrowed') echo 'selected'; ?>>Borrowed</option>
-            <option value="available" <?php if(isset($edit_borrow_status) && $edit_borrow_status == 'available') echo 'selected'; ?>>Available</option>
-        </select>
-        
-        <!-- <button type="submit" name="Add_borrow">Add Borrow</button> -->
-        <?php
-                        if ($update == true):
-                            ?>
-                            <button type="submit"  name="update">update borrow</button>
-                            
- 
-                        <?php else: ?>
-                            <button type="submit" name="Add_borrow">Add Borrow</button>
-
-                        <?php endif; ?>
-    </form>
-</div>
-<div class="borrow-table">
+        <div class="borrow-table">
     <h3 class="center-title">Borrow Book Records</h3>
     <table id="borrow-records">
     <thead>
@@ -197,7 +167,8 @@ td:last-child button:hover {
                 
                 <a class="edit-btn" href="book_borrow.php?edit=<?php echo $row['borrow_id']; ?>">
                 <button style="background-color: #007bff; color: #fff;">Edit</button></a>
-                <a href="process.php?delete=<?php echo $row['borrow_id']; ?>"><button>Delete</button></a>
+                <!-- <a href="borrow_process.php?delete=<?php echo $row['borrow_id']; ?>onclick="return confirm('Do you want to delete this category?')"><button>Delete</button></a> -->
+                <a href="<?= $_SERVER['PHP_SELF'] ?>?delete=<?= $row['borrow_id'] ?>"  onclick="return confirm('Do you want to delete this category?')"><button >Delete</button></a>
             </td>
         </tr>
         <?php
@@ -209,6 +180,41 @@ td:last-child button:hover {
         ?>
     </tbody>
 </table>
+</div>
+<div class="form-container">
+        <h3 class="center-title"> Add Borrow Details</h3>
+
+
+    <form id="borrow-form" action="borrow_process.php" method="POST">
+        <label for="borrow_id">Borrow ID:</label>
+        <input type="text" id="borrow_id" name="borrow_id" placeholder="BR001" required pattern="BR\d{3}" value="<?php if(isset($edit_borrow_id)) echo $edit_borrow_id; ?>">
+        
+        <label for="book_id">Book ID:</label>
+        <input type="text" id="book_id" name="book_id" placeholder="B001" required pattern="B\d{3}" value="<?php if(isset($edit_book_id)) echo $edit_book_id; ?>">
+        
+        <label for="member_id">Member ID:</label>
+        <input type="text" id="member_id" name="member_id" placeholder="M001" required pattern="M\d{3}" value="<?php if(isset($edit_member_id)) echo $edit_member_id; ?>">
+        
+        <label for="borrow_status">Borrow Status:</label>
+        <select id="borrow_status" name="borrow_status" required>
+            <option value="borrowed" <?php if(isset($edit_borrow_status) && $edit_borrow_status == 'borrowed') echo 'selected'; ?>>Borrowed</option>
+            <option value="available" <?php if(isset($edit_borrow_status) && $edit_borrow_status == 'available') echo 'selected'; ?>>Available</option>
+        </select>
+        
+        <!-- <button type="submit" name="Add_borrow">Add Borrow</button> -->
+        <?php
+                        if ($update == true):
+                            ?>
+                            <button type="submit"  name="update">update borrow</button>
+                            
+ 
+                        <?php else: ?>
+                            <button type="submit" name="Add_borrow">Add Borrow</button>
+
+                        <?php endif; ?>
+    </form>
+</div>
+
     
 </body>
 </html>
