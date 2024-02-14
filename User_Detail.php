@@ -53,7 +53,7 @@ if (isset($_POST['delete'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Registration and Details</title>
     <style>
-        /* CSS styles for the form and table */
+
         body {
             background-image: url('img/Library.jpg');
             background-size: cover;

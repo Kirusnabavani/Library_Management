@@ -11,13 +11,16 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color:palevioletred;
+            padding: 10px;
+            background: url('img/Library.jpg') center center fixed;
+
         }
 
         header {
             background-color: #333;
             color: #fff;
-            padding: 10px 0;
+            padding: 0;
             text-align: center;
         }
 
@@ -36,12 +39,26 @@
         }
 
         .nav-links {
+            font-size: 16px;
+            font-weight: bold;
             list-style-type: none;
             display: flex;
+            gap: 10px;
         }
 
+        .logout {
+              border: 2px;;
+              color: white;
+              padding: 15px 32px;
+              text-align: center;
+              display: inline-block;
+              font-size: 16px;
+              margin: 4px 2px;
+              cursor: pointer;
+        }
         .nav-links li {
             margin-right: 15px;
+            
         }
 
         .nav-links li a {
@@ -65,6 +82,7 @@
         h1 {
             text-align: center;
             margin-bottom: 30px;
+            color: white;
         }
 
         .dashboard-cards {
@@ -101,23 +119,14 @@
             color: #666;
         }
 
-        .logout {
-              border: 2px;;
-              color: white;
-              padding: 15px 32px;
-              text-align: center;
-              display: inline-block;
-              font-size: 16px;
-              margin: 4px 2px;
-              cursor: pointer;
-}
+        
     </style>
 </head>
 <body>
 
 <header>
   <nav>
-    <div class="nav-title">Library Management System</div>
+    <div class="nav-title"><img src="img/customize.png" alt="Admin" width="80px" height="80px"></div>
     <ul class="nav-links">
       <li><a href="User_Detail.php">User Details</a></li>
       <li><a href="member_registration.php">Member Registration</a></li>
@@ -132,7 +141,7 @@
 </header>
 
 <main>
-  <h1>ADMIN DASHBOARD</h1>
+  
   <div class="dashboard-cards">
     <div class="card">
       <img src="img/book list.png" alt="Books Listed" width="40px" height="20px">
