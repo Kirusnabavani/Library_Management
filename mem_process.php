@@ -4,7 +4,12 @@ session_start();
 
 
 
-
+$update = false;
+$member_id = "";
+$first_name = "";
+$last_name = "";
+$birthday = "";
+$email = "";
 
 if (isset($_POST['save'])) {
     $member_id = $_POST['member_id'];
