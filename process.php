@@ -49,7 +49,7 @@ if (isset($_GET['edit'])) {
     $BorrowID = $_GET['edit'];
     $update = true;
 
-    $result = $database->query("SELECT * FROM bookborrower WHERE borrow_id = '$BorrowID'") or die($database->error);
+    $result = $database->query("SELECT * FROM bookborrower WHERE borrow_id = '$BorrowID'");
 
     if (count(array($result)) == 1) {
         $row = $result->fetch_array() or die($database->error);
@@ -62,6 +62,48 @@ if (isset($_GET['edit'])) {
        
 
     }
+}
+
+
+if (isset($_GET['edit'])) {
+    $edit_id = $_GET['edit'];
+
+   
+    $sql = "SELECT * FROM bookborrower WHERE borrow_id = '$edit_id'";
+    $result = $database->query($sql);
+
+    if ($result->num_rows == 1) {
+        
+        $row = $result->fetch_assoc();
+        $edit_borrow_id = $row['borrow_id'];
+        $edit_book_id = $row['book_id'];
+        $edit_member_id = $row['member_id'];
+        $edit_borrow_status = $row['borrow_status'];
+        
+    } else {
+        
+        echo "Error: Record not found or multiple records found.";
+        exit; 
+    }
+}
+
+if (isset($_POST['update'])) {
+
+    $BorrowID = $_POST['borrow_id'];
+    $BookID = $_POST['book_id'];
+    $MemberID = $_POST['member_id'];
+    $B_Status = $_POST['borrow_status'];
+    $Date_Modified = date('Y-m-d H:i:s');
+
+    $sql = "UPDATE `bookborrower` SET `borrow_id`='$BorrowID',`book_id`='$BookID',`member_id`='$MemberID',`borrow_status`='$B_Status',`borrower_date_modified`='$Date_Modified' WHERE borrow_id = '$BorrowID'";
+    
+    $database->query($sql) or die($database->error);
+
+ 
+    $_SESSION['message'] = "Record has been Updated!";
+    $_SESSION['msg_type'] = "warning";
+    header("Location: book_borrow.php");
+    exit();
 }
 ?>
 
