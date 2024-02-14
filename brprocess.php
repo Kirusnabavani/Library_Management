@@ -16,12 +16,12 @@ if (isset($_POST['save'])) {
    
 
     $sql = "INSERT INTO book (book_id,book_name,category_id) VALUES ('$book_id','$book_name', '$category_id')";
-    if ($conn->query($sql) === TRUE) {
+    if ($database->query($sql) === TRUE) {
         echo "Record has been saved!";
         header("Location: book_registration.php");
         exit(); 
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $sql . "<br>" . $database->error;
     }
 }
 
@@ -32,7 +32,7 @@ if (isset($_POST['update'])) {
     
 
     $sql = "UPDATE `book` SET `book_name`='$book_name', `category_id`='$category_id'  WHERE book_id = '$book_id'";
-    $conn->query($sql) or die($conn->error);
+    $database->query($sql) or die($database->error);
 
     $_SESSION['message'] = "Record has been Updated!";
     $_SESSION['msg_type'] = "warning";
@@ -46,7 +46,7 @@ if (isset($_GET['delete'])) {
 
     // Check if there are any dependent records in bookborrower table
     $check_dependent_sql = "SELECT * FROM bookborrower WHERE book_id = '$book_id'";
-    $result = $conn->query($check_dependent_sql);
+    $result = $database->query($check_dependent_sql);
 
     if ($result->num_rows > 0) {
         // If there are dependent records, show an error message
@@ -55,7 +55,7 @@ if (isset($_GET['delete'])) {
     } else {
         // If there are no dependent records, proceed with deletion
         $sql = "DELETE FROM book WHERE book_id='$book_id'";
-        $conn->query($sql) or die($conn->error);
+        $database->query($sql) or die($database->error);
         $_SESSION['message'] = "Record has been deleted!";
         $_SESSION['msg_type'] = "warning";
     }
@@ -70,7 +70,7 @@ if (isset($_GET['edit'])) {
     $update = true;
 
     $sql = "SELECT * FROM book WHERE book_id='$book_id'";
-    $result = $conn->query($sql) or die($conn->error);
+    $result = $database->query($sql) or die($database->error);
 
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
@@ -85,7 +85,7 @@ if (isset($_GET['edit'])) {
 
     // Fetch the record from the database based on the edit_id
     $sql = "SELECT * FROM book WHERE book_id='$book_id'";
-    $result = $conn->query($sql) or die($conn->error);
+    $result = $database->query($sql) or die($database->error);
 
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
