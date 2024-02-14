@@ -55,21 +55,36 @@ if (isset($_POST['delete'])) {
     <style>
         /* CSS styles for the form and table */
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+            background-image: url('img/Library.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .container {
+            background-color:whitesmoke;
+            width: 80%;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
+            margin-left: 90px;
+            margin-right: 20px;
+            text-align: center;
         }
 
-        .form-container {
-            width: 80%;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: none; /* Initially hide the form */
+       
+
+        
+        .center-title {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            background-color:palevioletred;
+            padding: 10px;
+            border-radius: 5px;
         }
+
 
         .form-container.active {
             display: block; /* Display the form when active */
@@ -117,7 +132,7 @@ if (isset($_POST['delete'])) {
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 10px;
+            padding: 20px;
         }
 
         .user-table h2 {
@@ -164,8 +179,8 @@ if (isset($_POST['delete'])) {
     </style>
 </head>
 <body>
-<div class="user-table">
-    <h2>User Records</h2>
+<div class="container">
+<h3 class="center-title">User Records</h3>
     <table>
         <thead>
             <tr>
@@ -186,8 +201,10 @@ if (isset($_POST['delete'])) {
                     <td><?php echo $user['last_name']; ?></td>
                     <td><?php echo $user['username']; ?></td>
                     <td><?php echo $user['email']; ?></td>
-                    <td><?php echo $user['password']; ?></td>
+                    <td>********</td>
                     <td>
+
+                    
                         <button class="edit-btn" onclick="editUser('<?php echo $user['user_id']; ?>')">Edit</button>
                         <button onclick="deleteUser('<?php echo $user['user_id']; ?>')">Delete</button>
                     </td>
@@ -196,9 +213,9 @@ if (isset($_POST['delete'])) {
         </tbody>
     </table>
 </div>
-
-<div class="form-container" id="edit-form">
-    <h2>Edit Details</h2>
+<br>
+<div class="container" id="edit-form">
+<h3 class="center-title display-5">Edit Details</h3>
     <form id="user-form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <input type="hidden" id="user_id" name="user_id">
         <label for="first_name">First Name:</label>
@@ -240,7 +257,7 @@ if (isset($_POST['delete'])) {
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             xhr.onload = function () {
                 if (xhr.status == 200) {
-                    location.reload(); // Reload the page after successful deletion
+                    location.reload(); 
                 } else {
                     alert('Error deleting user');
                 }

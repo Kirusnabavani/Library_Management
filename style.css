@@ -51,14 +51,14 @@
    display: inline-block;
    padding:10px 30px;
    font-size: 20px;
-   background: #333;
+   background:palevioletred;
    color:#fff;
    margin:0 5px;
    text-transform: capitalize;
 }
 
 .container .content .btn:hover{
-   background: crimson;
+   background:palevioletred;;
 }
 
 .form-container{
@@ -102,7 +102,7 @@
 }
 
 .form-container form .form-btn{
-   background: #fbd0d9;
+   background:palevioletred;
    color:crimson;
    text-transform: capitalize;
    font-size: 20px;
@@ -127,7 +127,7 @@
 .form-container form .error-msg{
    margin:10px 0;
    display: block;
-   background: crimson;
+   background: palevioletred;
    color:#fff;
    border-radius: 5px;
    font-size: 20px;
