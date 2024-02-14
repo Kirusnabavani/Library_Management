@@ -60,6 +60,7 @@ if (isset($_POST['delete'])) {
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
+            font-family: Arial, sans-serif;
         }
         .container {
             background-color:whitesmoke;
@@ -102,6 +103,7 @@ if (isset($_POST['delete'])) {
 
         label {
             font-weight: bold;
+            text-align: left;
         }
 
         input[type="text"],
