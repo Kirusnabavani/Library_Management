@@ -1,5 +1,5 @@
 <?php 
-require_once("brprocess.php");
+require_once("process.php");
 require_once("./config.php");
 
 ?>
@@ -113,14 +113,6 @@ require_once("./config.php");
         td:last-child button:hover {
             background-color: #c82333;
         }
-        .center-title {
-            text-align: center;
-            color: white;
-            margin-bottom: 30px;
-            background-color:palevioletred;
-            padding: 10px;
-            border-radius: 5px;
-        }
     </style>
 </head>
 <body>
@@ -145,10 +137,41 @@ require_once("./config.php");
             </div>
         <?php endif; ?>
 
+    <div class="form-container">
+    <h2>Book Registration</h2>
+    <?php if($update==true):  ?>
+        <h2>Edit Info</h2>
+    <?php else: ?>
+        <h2>Add Info</h2>
+    <?php endif; ?>
+
+    <form id="book-form" method="post" action="process.php">
+
+        <label for="book_id">Book ID:</label>
+        <input type="text" id="book_id" name="book_id" placeholder="B001" value="<?php if(isset($book_id)) echo $book_id; ?>" required pattern="B\d{3}" onchange="checkDuplicateBookId()">
+
+        <label for="book_name">Book Name:</label>
+        <input type="text" id="book_name" name="book_name" value="<?php if(isset($book_name)) echo $book_name; ?>" required>
+
+        <label for="category_id">Book Category:</label>
+        <input type="text" id="category_id" name="category_id" placeholder="C001" value="<?php if(isset($category_id)) echo $category_id; ?>" required>
+
+        <?php
+                        if ($update == true):
+                            ?>
+                            <button type="submit"  name="update">update</button>
+                            
+ 
+                        <?php else: ?>
+                            <button type="submit" name="save">Add</button>
+
+        <?php endif; ?>
+    </form>
+</div>
+
 
 <div class="book-table">
     <h2>Book Records</h2>
-    <h3 class="center-title display-5">Book Records</h3>
     <table border="1">
         <thead>
             <tr>
@@ -182,39 +205,6 @@ require_once("./config.php");
             ?>
         </tbody>
     </table>
-</div>
-
-<div class="form-container">
-    <h3 class="center-title display-5">Book Registration</h3>
-    <!-- <h2>Book Registration</h2> -->
-    <!-- <?php if($update==true):  ?>
-        <h2>Edit Info</h2>
-    <?php else: ?>
-        <h2>Add Info</h2>
-    <?php endif; ?> -->
-
-    <form id="book-form" method="post" action="brprocess.php">
-
-        <label for="book_id">Book ID:</label>
-        <input type="text" id="book_id" name="book_id" placeholder="B001" value="<?php if(isset($book_id)) echo $book_id; ?>" required pattern="B\d{3}" onchange="checkDuplicateBookId()">
-
-        <label for="book_name">Book Name:</label>
-        <input type="text" id="book_name" name="book_name" value="<?php if(isset($book_name)) echo $book_name; ?>" required>
-
-        <label for="category_id">Book Category:</label>
-        <input type="text" id="category_id" name="category_id" placeholder="C001" value="<?php if(isset($category_id)) echo $category_id; ?>" required>
-
-        <?php
-                        if ($update == true):
-                            ?>
-                            <button type="submit"  name="update">update</button>
-                            
- 
-                        <?php else: ?>
-                            <button type="submit" name="save">Add</button>
-
-        <?php endif; ?>
-    </form>
 </div>
 
 <script>
