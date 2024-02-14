@@ -9,7 +9,7 @@ $MemberID="";
 $B_Status="";
 $Date_Modified="";
 
-if (isset($_POST['Add borrow'])) {
+if (isset($_POST['Add_borrow'])) {
 
     print_r($_POST);
 
@@ -17,17 +17,19 @@ if (isset($_POST['Add borrow'])) {
     $BookID = $_POST['book_id'];
     $MemberID = $_POST['member_id'];
     $B_Status = $_POST['borrow_status'];
-    $Date_Modified = $_POST['borrower_date_modified'];
+    $Date_Modified = date('Y-m-d H:i:s');
     
-
+    
     $sql = "INSERT INTO bookborrower (borrow_id, book_id, member_id, borrow_status, borrower_date_modified) 
         VALUES ('$BorrowID', '$BookID', '$MemberID', '$B_Status', '$Date_Modified')";
 
-    $database->query($sql) or die($database->error);
-    echo "Record has been saved!";
-    echo "Now you are in the process.php file $_POST ['Add borrow']";
-
-    header("Location: book_borrow.php");
+    if ($database->query($sql) === TRUE) {
+        echo "Record has been saved!";
+        header("Location: book_borrow.php");
+        exit(); 
+    } else {
+        echo "Error: " . $sql . "<br>" . $database->error;
+    }
 }
 
 if (isset($_GET['delete'])) {
@@ -40,6 +42,7 @@ if (isset($_GET['delete'])) {
     echo "<h1>Now you are in the process.php file /$_GET [delete]/<-deleted</h1>";
 
     header("Location: book_borrow.php");
+    exit();
 }
 
 if (isset($_GET['edit'])) {
