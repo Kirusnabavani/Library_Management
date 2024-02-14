@@ -114,9 +114,6 @@ require_once("./config.php");
         
         <label for="email">Email address:</label>
         <input type="email" id="email" name="email" placeholder="sample@mymail.com" value="<?php if(isset($email)) echo $email; ?>" required>
-        <small class="error-message">
-                    <?php if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add']) && !validate_category_id($_POST['member_id'])) echo "Invalid Category ID format. Example: C001"; ?>
-        </small>
         
         <?php
                         if ($update == true):
