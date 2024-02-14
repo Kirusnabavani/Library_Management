@@ -115,7 +115,16 @@ require_once("./config.php");
         <label for="email">Email address:</label>
         <input type="email" id="email" name="email" placeholder="sample@mymail.com" value="<?php if(isset($email)) echo $email; ?>" required>
         
-        
+        <?php
+                        if ($update == true):
+                            ?>
+                            <button type="submit"  name="update">update</button>
+                            
+ 
+                        <?php else: ?>
+                            <button type="submit" name="save">Add</button>
+
+                        <?php endif; ?>
     
     </form>
 </div>
