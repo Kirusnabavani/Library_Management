@@ -1,7 +1,7 @@
 <?php
 require_once('config.php');
 
-// Fetch user records from the database
+// Fetch user records from database
 $query = "SELECT * FROM user";
 $result = $database->query($query);
 $users = $result->fetch_all(MYSQLI_ASSOC);
