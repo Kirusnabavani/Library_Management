@@ -133,7 +133,7 @@
       <li><a href="member_registration.php">Member Registration</a></li>
       <li><a href="book_registration.php">Books Registration</a></li>
       <li><a href="book_borrow.php">Books Borrow</a></li>
-      <li><a href="book_cat_regist.php">Book Categories</a></li>
+      <li><a href="book_category.php">Book Categories</a></li>
       <li><a href="fine.php">Assign Fine</a></li>
       
       <li><a href="index.php" class="logout">Log Me Out</a></li>
