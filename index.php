@@ -12,7 +12,7 @@
     font-family: Arial, sans-serif;
   }
   .full-background {
-    background-image: url("img/Library.jpg"); /* Replace with the path to your image */
+    background-image: url("img/Library.jpg"); 
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -23,7 +23,7 @@
     justify-content: space-between;
   }
   .header, .footer {
-    background: rgba(0, 100, 0, 0.7); /* Green background with opacity */
+    background: rgba(0, 100, 0, 0.7);
     color: white;
     text-align: center;
     padding: 20px;
@@ -45,11 +45,11 @@
     text-decoration: none;
     border-radius: 5px;
     margin: 0 20px;
-    width: 200px; /* Fixed width */
+    width: 200px; 
     text-align: center;
   }
   .option img {
-    width: 50px; /* Adjust as needed */
+    width: 50px; 
     height: auto;
   }
   .option h3 {
@@ -66,13 +66,13 @@
 
   <div class="options">
     <div class="option">
-      <a href="a_login_form.php"> <!-- Link to the admin section -->
-        <img src="img/admin-icon.png" alt="Admin">
+      <a href="login.php"> 
+        <img src="img/admin-icon.png" alt="admin">
         <h3>Admin</h3>
       </a>
     </div>
     <div class="option">
-      <a href="student-section.php"> <!-- Link to the student section -->
+      <a href="student-section.php"> 
         <img src="img/student-icon.png" alt="Student">
         <h3>Student</h3>
       </a>
