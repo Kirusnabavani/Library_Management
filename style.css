@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b3a391ecac59c4c1122f4b72b54461e125d62993
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -95,6 +98,7 @@ td:last-child button {
 td:last-child button:hover {
     background-color: #c82333;
 }
+<<<<<<< HEAD
 =======
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
 
@@ -235,3 +239,5 @@ td:last-child button:hover {
 
 
 >>>>>>> 03a3a4ec23a695c7079ca945a102fbb8688e7e7e
+=======
+>>>>>>> b3a391ecac59c4c1122f4b72b54461e125d62993
