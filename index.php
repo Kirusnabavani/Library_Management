@@ -67,7 +67,7 @@
   <div class="options">
     <div class="option">
       <a href="login.php"> 
-        <img src="img/admin-icon.png" alt="Admin">
+        <img src="img/admin-icon.jpeg" alt="Admin">
         <h3>Admin</h3>
       </a>
     </div>
